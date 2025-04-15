@@ -44,13 +44,27 @@ passport.use('signup', new LocalStrategy({
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    // Create new user
-    const newUser = new User({
+    // Prepare user data based on role
+    const { role, full_name, bio, address, skill, areas_of_expertise, service_area, bvn } = req.body;
+    const userData = {
+      role,
+      full_name,
       email,
       password: hashedPassword,
-      first_name: req.body.first_name,
-      last_name: req.body.last_name
-    });
+      address
+    };
+
+    if (role === 'consumer') {
+      userData.bio = bio;
+    } else if (role === 'skilled') {
+      userData.skill = skill;
+      userData.areas_of_expertise = areas_of_expertise;
+      userData.service_area = service_area;
+      userData.bvn = bvn;
+    }
+
+    // Create new user
+    const newUser = new User(userData);
 
     await newUser.save();
     return done(null, newUser);
