@@ -2,6 +2,8 @@
 
 A Node.js RESTful API for managing users (consumers and skilled persons) with authentication, built with Express, MongoDB, Passport, and Joi validation.
 
+**Deployed API Base URL:** `https://skillhub-api-y3gi.onrender.com`
+
 ## Features
 
 - User registration for both consumers and skilled persons
