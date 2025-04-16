@@ -1,5 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const cors = require('cors'); // <--- Add this line
 const connectDB = require('./database/db');
 const userRoutes = require('./routes/userRoutes');
 const authRoutes = require('./routes/authentication');
@@ -9,6 +10,8 @@ connectDB();
 
 const app = express();
 const PORT = process.env.PORT || 4000;
+
+app.use(cors()); // <--- Add this line
 
 app.use(express.json());
 app.use('/api/users', userRoutes);
