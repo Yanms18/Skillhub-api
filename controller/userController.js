@@ -17,7 +17,7 @@ const getUser = async (req, res) => {
 const getAllUsers = async (req, res) => {
   try {
     // Fetch all users from the database
-    const allusers = await User.findAll();
+    const allusers = await User.find();
     res.status(200).json(allusers);
   } catch (error) {
     res.status(500).json({ message: 'Failed to retrieve users' });
