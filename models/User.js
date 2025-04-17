@@ -26,6 +26,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: ''
   },
+  photoURL: {                
+    type: String,
+    default: ''
+  },
   // Consumer fields
   bio: {
     type: String,

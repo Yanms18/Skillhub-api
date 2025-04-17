@@ -9,6 +9,7 @@ const signupSchema = Joi.object({
   // Consumer fields
   bio: Joi.when('role', { is: 'consumer', then: Joi.string().allow('').optional() }),
   address: Joi.string().allow('').optional(),
+  photoURL: Joi.string().uri().allow('').optional(), 
   // Skilled person fields
   skill: Joi.when('role', { is: 'skilled', then: Joi.string().required(), otherwise: Joi.forbidden() }),
   areas_of_expertise: Joi.when('role', { is: 'skilled', then: Joi.array().items(Joi.string()).optional(), otherwise: Joi.forbidden() }),
