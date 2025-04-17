@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('/:id', getUser);
 
 // Endpoint for retrieving all users
-router.get('/users', getAllUsers);
+router.get('/allusers', getAllUsers);
 
 // Endpoint to create a new user
 router.post('/', createUser);
