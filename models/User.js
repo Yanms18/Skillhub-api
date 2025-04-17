@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema({
   },
   photourl: {                
     type: String,
-    default: ''
+    required: true
   },
   // Consumer fields
   bio: {
