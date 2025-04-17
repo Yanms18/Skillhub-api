@@ -13,6 +13,18 @@ const getUser = async (req, res) => {
   }
 };
 
+// Get all user details
+const getAllUsers = async (req, res) => {
+  try {
+    // Fetch all users from the database
+    const users = await User.findAll();
+    res.status(200).json(users);
+  } catch (error) {
+    console.error('Error fetching users:', error);
+    res.status(500).json({ message: 'Failed to retrieve users' });
+  }
+};
+
 // Create a new user
 const createUser = async (req, res) => {
   try {
