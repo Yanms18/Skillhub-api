@@ -3,22 +3,27 @@ const jwt = require('jsonwebtoken');
 
 // Signup Controller
 const signup = async (req, res, next) => {
-  passport.authenticate('signup', { session: false }, (err, user, info) => {
-    if (err) {
-      return next(err);
-    }
-    if (!user) {
-      return res.status(400).json({ message: info.message });
-    }
-    res.status(201).json({
-      message: 'Signup successful',
-      user: {
-        id: user._id,
-        email: user.email,
-        full_name: user.full_name
+  try {
+    passport.authenticate('signup', { session: false }, (err, user, info) => {
+      if (err) {
+        return next(err);
       }
-    });
-  })(req, res, next);
+      if (!user) {
+        return res.status(400).json({ message: info.message });
+      }
+      res.status(201).json({
+        message: 'Signup successful',
+        user: {
+          id: user._id,
+          email: user.email,
+          full_name: user.full_name
+        }
+      });
+    })(req, res, next);
+  } catch (error) {
+    console.error(error); // Log the error for debugging
+    res.status(500).json({ error: error.message || error });
+  }
 };
 
 // Signin Controller

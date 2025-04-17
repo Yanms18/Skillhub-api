@@ -45,13 +45,14 @@ passport.use('signup', new LocalStrategy({
     const hashedPassword = await bcrypt.hash(password, salt);
 
     // Prepare user data based on role
-    const { role, full_name, bio, address, skill, areas_of_expertise, service_area, bvn } = req.body;
+    const { role, full_name, bio, address, skill, photoURL, areas_of_expertise, service_area, bvn } = req.body;
     const userData = {
       role,
       full_name,
       email,
       password: hashedPassword,
-      address
+      address,
+      photoURL
     };
 
     if (role === 'consumer') {

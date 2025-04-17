@@ -6,7 +6,7 @@ const signupSchema = Joi.object({
   full_name: Joi.string().min(2).max(50).required(),
   email: Joi.string().email().required(),
   password: Joi.string().min(6).required(),
-  photourl: Joi.string().allow('').required(), 
+  photoURL: Joi.string().allow('').required(), 
   // Consumer fields
   bio: Joi.when('role', { is: 'consumer', then: Joi.string().allow('').optional() }),
   address: Joi.string().allow('').optional(),

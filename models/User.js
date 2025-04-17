@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: ''
   },
-  photourl: {                
+  photoURL: {                
     type: String,
     required: true
   },
