@@ -47,6 +47,9 @@ const userSchema = new mongoose.Schema({
   },
   bvn: {
     type: String
+  },
+  bvn_URL: {
+    type: String
   }
 }, { timestamps: true });
 

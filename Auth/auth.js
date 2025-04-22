@@ -45,7 +45,17 @@ passport.use('signup', new LocalStrategy({
     const hashedPassword = await bcrypt.hash(password, salt);
 
     // Prepare user data based on role
-    const { role, full_name, bio, address, skill, photoURL, areas_of_expertise, service_area, bvn } = req.body;
+    const { role, 
+            full_name, 
+            bio, 
+            address, 
+            skill, 
+            photoURL, 
+            areas_of_expertise, 
+            service_area, 
+            bvn, 
+            bvn_URL } = req.body;
+
     const userData = {
       role,
       full_name,
@@ -62,6 +72,7 @@ passport.use('signup', new LocalStrategy({
       userData.areas_of_expertise = areas_of_expertise;
       userData.service_area = service_area;
       userData.bvn = bvn;
+      userData.bvn_URL = bvn_URL; 
     }
 
     // Create new user
