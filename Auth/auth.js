@@ -54,7 +54,8 @@ passport.use('signup', new LocalStrategy({
             areas_of_expertise, 
             service_area, 
             bvn, 
-            bvn_URL } = req.body;
+            bvn_URL,
+            videoURL } = req.body;
 
     const userData = {
       role,
@@ -62,7 +63,8 @@ passport.use('signup', new LocalStrategy({
       email,
       password: hashedPassword,
       address,
-      photoURL
+      photoURL,
+      videoURL
     };
 
     if (role === 'consumer') {

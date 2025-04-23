@@ -50,6 +50,9 @@ const userSchema = new mongoose.Schema({
   },
   bvn_URL: {
     type: String
+  },
+  videoURL: {
+    type: String,
   }
 }, { timestamps: true });
 
