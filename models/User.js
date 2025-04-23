@@ -40,7 +40,7 @@ const userSchema = new mongoose.Schema({
     type: String
   },
   areas_of_expertise: {
-    type: [String]
+    type: String
   },
   service_area: {
     type: String

@@ -13,7 +13,7 @@ const signupSchema = Joi.object({
 
   // Skilled person fields
   skill: Joi.when('role', { is: 'skilled', then: Joi.string().required(), otherwise: Joi.forbidden() }),
-  areas_of_expertise: Joi.when('role', { is: 'skilled', then: Joi.array().items(Joi.string()).optional(), otherwise: Joi.forbidden() }),
+  areas_of_expertise: Joi.when('role', { is: 'skilled', then: Joi.string().optional(), otherwise: Joi.forbidden() }),
   service_area: Joi.when('role', { is: 'skilled', then: Joi.string().optional(), otherwise: Joi.forbidden() }),
   bvn: Joi.when('role', { is: 'skilled', then: Joi.string().optional(), otherwise: Joi.forbidden() }),
   bvn_URL: Joi.string().allow('').required(),
