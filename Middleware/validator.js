@@ -17,7 +17,7 @@ const signupSchema = Joi.object({
   areas_of_expertise: Joi.when('role', { is: 'skilled', then: Joi.string().optional(), otherwise: Joi.forbidden() }),
   service_area: Joi.when('role', { is: 'skilled', then: Joi.string().optional(), otherwise: Joi.forbidden() }),
   bvn: Joi.when('role', { is: 'skilled', then: Joi.string().optional(), otherwise: Joi.forbidden() }),
-  bvn_URL: Joi.string().allow('').required(),
+  bvn_URL: Joi.when('role', { is: 'skilled', then: Joi.string().optional(), otherwise: Joi.forbidden() }),
 });
 
 // Signin validation schema
