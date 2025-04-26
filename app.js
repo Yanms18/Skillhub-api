@@ -4,6 +4,7 @@ const cors = require('cors'); // <--- Add this line
 const connectDB = require('./database/db');
 const userRoutes = require('./routes/userRoutes');
 const authRoutes = require('./routes/authentication');
+const hiringArtisanRoutes = require('./routes/hiringArtisanRoutes');
 
 dotenv.config();
 connectDB();
@@ -16,6 +17,8 @@ app.use(cors());
 app.use(express.json());
 app.use('/api/users', userRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/hiring', hiringArtisanRoutes);
+
 
 // Example route to test the server
 app.get('/', (req, res) => {

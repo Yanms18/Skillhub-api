@@ -7,7 +7,9 @@ const signupSchema = Joi.object({
   email: Joi.string().email().required(),
   password: Joi.string().min(6).required(),
   photoURL: Joi.string().allow('').required(),
-  videoURL: Joi.string().allow('').optional(), 
+  videoURL: Joi.string().allow('').optional(),
+  verified: Joi.boolean().default(false),
+  ratings: Joi.number().default(0), 
   // Consumer fields
   bio: Joi.when('role', { is: 'consumer', then: Joi.string().allow('').optional() }),
   address: Joi.string().allow('').optional(),
@@ -24,6 +26,17 @@ const signupSchema = Joi.object({
 const signinSchema = Joi.object({
   email: Joi.string().email().required(),
   password: Joi.string().min(6).required()
+});
+
+// Hiring Request validation schema
+const hiringRequestSchema = Joi.object({
+  fullName: Joi.string().min(2).max(100).required(),
+  email: Joi.string().email().required(),
+  jobDescription: Joi.string().min(5).required(),
+  startDate: Joi.string().required(),
+  endDate: Joi.string().required(),
+  startTime: Joi.string().required(),
+  notes: Joi.string().allow('').optional(),
 });
 
 // Middleware for validating signup requests
@@ -44,9 +57,20 @@ const validateSignin = (req, res, next) => {
   next();
 };
 
+// Middleware for validating hiring requests
+const validateHiringRequest = (req, res, next) => {
+  const { error } = hiringRequestSchema.validate(req.body);
+  if (error) {
+    return res.status(400).json({ message: error.details[0].message });
+  }
+  next();
+};
+
 module.exports = {
   signupSchema,
   signinSchema,
   validateSignup,
-  validateSignin
+  validateSignin,
+  hiringRequestSchema,
+  validateHiringRequest
 };

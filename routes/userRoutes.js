@@ -4,6 +4,8 @@ const passport = require('../Auth/auth');
 
 const router = express.Router();
 
+
+
 // Endpoint for retrieving all users
 router.get('/', getAllUsers);
 
