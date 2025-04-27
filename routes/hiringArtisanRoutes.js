@@ -4,9 +4,9 @@ const { createHiringRequest, getHiringRequests } = require('../controller/hiring
 const router = express.Router();
 
 // Route to create a new hiring request
-router.post('/hiring', createHiringRequest);
+router.post('/hire', createHiringRequest);
 
 // Route to get all hiring requests
-router.get('/hiring', getHiringRequests);
+router.get('/hire', getHiringRequests);
 
 module.exports = router;
