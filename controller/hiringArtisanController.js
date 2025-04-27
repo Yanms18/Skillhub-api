@@ -1,3 +1,5 @@
+const HiringRequest = require('../models/hiringArtisanModel');
+
 const createHiringRequest = async (req, res) => {
   try {
     const {
@@ -29,4 +31,19 @@ const createHiringRequest = async (req, res) => {
   } catch (error) {
     res.status(500).json({ error });
   }
+};
+
+// Get all hiring requests
+const getHiringRequests = async (req, res) => {
+  try {
+    const requests = await HiringRequest.find();
+    res.status(200).json(requests);
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+};
+
+module.exports = {
+  createHiringRequest,
+  getHiringRequests
 };
