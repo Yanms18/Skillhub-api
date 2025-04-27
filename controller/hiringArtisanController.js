@@ -3,6 +3,8 @@ const HiringRequest = require('../models/hiringArtisanModel');
 const createHiringRequest = async (req, res) => {
   try {
     const {
+      artisanId,
+      artisanName,
       fullName,
       email,
       jobDescription,
@@ -13,6 +15,8 @@ const createHiringRequest = async (req, res) => {
     } = req.body;
 
     const newRequest = new HiringRequest({
+      artisanId,
+      artisanName,
       fullName,
       email,
       jobDescription,

@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
 const HiringRequestSchema = new mongoose.Schema({
+  artisanId: { type: String, required: true },
+  artisanName: { type: String, required: true },
   fullName: { type: String, required: true },
   email: { type: String, required: true },
   jobDescription: { type: String, required: true },

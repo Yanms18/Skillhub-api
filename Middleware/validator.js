@@ -30,6 +30,8 @@ const signinSchema = Joi.object({
 
 // Hiring Request validation schema
 const hiringRequestSchema = Joi.object({
+  artisanId: Joi.string().required(),
+  artisanName: Joi.string().required(),
   fullName: Joi.string().min(2).max(100).required(),
   email: Joi.string().email().required(),
   jobDescription: Joi.string().min(5).required(),
