@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const redisClient = require('../database/redisClient');
 
 // Get user details
 const getUser = async (req, res) => {
@@ -13,11 +14,20 @@ const getUser = async (req, res) => {
   }
 };
 
-// Get all user details
+// Get all user details with Redis caching
 const getAllUsers = async (req, res) => {
   try {
-    // Fetch all users from the database
+    // Try to get from cache
+    const cacheKey = 'all_users';
+    const cached = await redisClient.get(cacheKey);
+    if (cached) {
+      return res.status(200).json(JSON.parse(cached));
+    }
+
+    // If not cached, fetch from DB
     const allUsers = await User.find();
+    // Cache the result for 60 seconds
+    await redisClient.setEx(cacheKey, 60, JSON.stringify(allUsers));
     res.status(200).json(allUsers);
   } catch (error) {
     res.status(500).json({ message: 'Failed to retrieve users' });
