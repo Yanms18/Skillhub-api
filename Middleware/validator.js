@@ -41,6 +41,14 @@ const hiringRequestSchema = Joi.object({
   notes: Joi.string().allow('').optional(),
 });
 
+// Contact Message validation schema
+const contactMessageSchema = Joi.object({
+  name: Joi.string().min(2).max(100).required(),
+  email: Joi.string().email().required(),
+  phoneNumber: Joi.string().min(7).max(20).required(),
+  message: Joi.string().min(5).required(),
+});
+
 // Middleware for validating signup requests
 const validateSignup = (req, res, next) => {
   const { error } = signupSchema.validate(req.body);
@@ -68,11 +76,22 @@ const validateHiringRequest = (req, res, next) => {
   next();
 };
 
+// Middleware for validating contact messages
+const validateContactMessage = (req, res, next) => {
+  const { error } = contactMessageSchema.validate(req.body);
+  if (error) {
+    return res.status(400).json({ message: error.details[0].message });
+  }
+  next();
+};
+
 module.exports = {
   signupSchema,
   signinSchema,
   validateSignup,
   validateSignin,
   hiringRequestSchema,
-  validateHiringRequest
+  validateHiringRequest,
+  contactMessageSchema,
+  validateContactMessage
 };
