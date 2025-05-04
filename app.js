@@ -7,7 +7,7 @@ const authRoutes = require('./routes/authentication');
 const hiringArtisanRoutes = require('./routes/hiringArtisanRoutes');
 const paystackRoutes = require('./routes/paystackRoutes');
 const contactRoutes = require('./routes/contactRoutes');
-const conversationRoutes = require('./routes/conversation');
+const conversationRoutes = require('./routes/conversationRoutes');
 const messageRoutes = require('./routes/messageRoutes');
 
 dotenv.config();

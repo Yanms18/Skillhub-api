@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const message = require('../models/MessageModel');
+const message = require('../models/messageModel');
 
 //add message
 router.post('/', async (req, res) => {
@@ -23,3 +23,5 @@ router.get('/:conversationId', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+module.exports = router;

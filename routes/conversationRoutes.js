@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Conversation = require('../models/ConversationModel');
+const Conversation = require('../models/conversationModel');
  
 //new conversation
 router.post('/', async (req, res) => {
@@ -25,3 +25,5 @@ router.get('/:userId', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+module.exports = router;
