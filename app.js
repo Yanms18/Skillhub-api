@@ -7,6 +7,8 @@ const authRoutes = require('./routes/authentication');
 const hiringArtisanRoutes = require('./routes/hiringArtisanRoutes');
 const paystackRoutes = require('./routes/paystackRoutes');
 const contactRoutes = require('./routes/contactRoutes');
+const conversationRoutes = require('./routes/conversation');
+const messageRoutes = require('./routes/messageRoutes');
 
 dotenv.config();
 connectDB();
@@ -22,6 +24,8 @@ app.use('/api/auth', authRoutes);
 app.use('/api/hiring', hiringArtisanRoutes);
 app.use('/api/paystack', paystackRoutes);
 app.use('/api/contactUs', contactRoutes);
+app.use('/api/conversations', conversationRoutes);
+app.use('/api/messages', messageRoutes);
 
 
 // Example route to test the server
